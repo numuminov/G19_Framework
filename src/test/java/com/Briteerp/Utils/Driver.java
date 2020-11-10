@@ -1,9 +1,8 @@
-package com.briteerp.utils;
+package com.Briteerp.Utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -16,7 +15,7 @@ public class Driver {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            String browser = com.briteerp.utils.ConfigurationReader.getProperty("browser");
+            String browser = com.Briteerp.Utils.ConfigurationReader.getProperty("browser");
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();

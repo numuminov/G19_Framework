@@ -1,4 +1,4 @@
-package com.briteerp.pages;
+package com.Briteerp.Pages;
 
 public class LeavesPage extends TestBasePage{
 }

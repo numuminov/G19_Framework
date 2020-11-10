@@ -1,4 +1,4 @@
-package com.briteerp.utils;
+package com.Briteerp.Utils;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
