@@ -1,10 +1,12 @@
+
+@Pasha @Regression
 Feature: : check Lunch functionality with valid expenses manager credential
   Background:
     Given user in the "Lunch" page
 
 
 
-@pasha
+
   Scenario: check 'My Lunch' module functionality
     #Given user in the "Lunch" page
     When user click on "New Order" tab
@@ -13,7 +15,6 @@ Feature: : check Lunch functionality with valid expenses manager credential
     And check expenses by clicking on "Your Lunch Account" tab
 
 ###############################################################################################################
-@pasha
 Scenario Outline: check "Manager" module functionality
      # Given user in the "Lunch" page
       When user click on "<tabs>" tab
@@ -26,7 +27,6 @@ Scenario Outline: check "Manager" module functionality
 | Employee Payments|    Register Cash Moves        |
 
 ##################################################################################################################
-@pasha
   Scenario Outline: check "Products" tab functionality from "Configurations" module
     # Given user in the "Lunch" page
     When user click on "Products" tab
@@ -45,7 +45,6 @@ Scenario Outline: check "Manager" module functionality
 ###############################################################################################################
 
 
-  @pasha
   Scenario: check "Products Categories" tab functionality from "Configurations" module
     # Given user in the "Lunch" page
     When user click on "Products Categories" tab
@@ -55,7 +54,7 @@ Scenario Outline: check "Manager" module functionality
     And choose specific category by clicking on this item
     And sort categories by clicking on "Category" tab
 ###################################################################################################################
-  @pasha
+
   Scenario: check "Alerts" tab functionality from "Configurations" module
     # Given user in the "Lunch" page
     When user click on "Alerts" tab
