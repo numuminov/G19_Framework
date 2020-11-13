@@ -2,12 +2,17 @@ package com.Briteerp.StepDefinitions.Lunch;
 
 import com.Briteerp.Pages.LunchPage;
 import com.Briteerp.Utils.BrowserUtils;
+import com.Briteerp.Utils.ConfigurationReader;
 import com.Briteerp.Utils.Driver;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Lunch_POM {
 LunchPage lunchPage = new LunchPage();
@@ -52,15 +57,26 @@ BrowserUtils.wait(2);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @When("user click on {string}")
-    public void userClick_on_tab(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void userClick_on_tab(DataTable tabs,DataTable expResult) {
+        List<List<String>> data =  tabs.asList(String.class);
+        for (int i = 0; i<= data.size()-1;i++) {
+            lunchPage.managerModuleFill(data.get(i).get(0));
+        }
+
+        List<List<String>> listExpRes = expResult.asList(String.class);
+        for (int i = 0; i<=listExpRes.size()-1;i++) {
+
+            lunchPage.managerModuleTextVerif(listExpRes.get(i).get(1));
+        }
     }
     @Then("user should be able to see {string} information")
-    public void userShould_be_able_to_see(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void userShould_be_able_to_see(DataTable expResult) {
+
     }
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //                                                US3
 
