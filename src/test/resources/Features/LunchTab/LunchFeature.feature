@@ -20,13 +20,14 @@ Feature: : check Lunch functionality with valid expenses manager credential
 Scenario Outline: check "Manager" module functionality
      # Given user in the "Lunch" page
       When user click on "<tabs>"
-      Then user should be able to see "<expectResult>" information
+      Then user should be able to see information about "<tabs>" page
+     And user should be able to do the "<actions>" from the page specific tab
       Examples:
-|tabs              | expectResult                 |
-|  Today`s order   |     Orders by Vendor          |
-| Orders by Vendor |     Control Vendors           |
-| Control Accounts |     Control Accounts          |
-| Employee Payments|    Register Cash Moves        |
+|       tabs       |    actions                     |
+|  Today`s order   |  Create a new order for today  |
+| Orders by Vendor |  Create a new order by Vendor  |
+| Control Accounts |  Create a new account          |
+| Employee Payments|  Create a new payment          |
 
 
                                          #US3

@@ -2,6 +2,7 @@ package com.Briteerp.Pages;
 
 import com.Briteerp.Utils.BrowserUtils;
 import com.Briteerp.Utils.Driver;
+import io.cucumber.datatable.DataTable;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
+import java.util.Map;
 
 public class LunchPage extends TestBasePage{
 
@@ -44,89 +48,72 @@ public WebElement NewOrderBut;
 
 
 //---------------------------US2 WebElements & Methods------------------------------------------------------------------
+//Today`s Order button
     @FindBy(xpath = "//a[@class='oe_menu_leaf'][@data-menu='101']")
     public WebElement todaysOrderButton;
 
-    @FindBy(xpath = "//li[@class='active'][.='Orders by Vendor']")
+//Header from "Today`s Order" page
+    @FindBy(xpath = "//li[.='Orders by Vendor']")
     public WebElement textVerifOnTodaysOrder;
 
+//Vendors Order button
     @FindBy(xpath = "//a[@class='oe_menu_leaf'][@data-menu='102']")
     public WebElement vendorsOrderButton;
 
-    @FindBy(xpath = "//li[@class='active'][.='Control Vendors']")
+//Header from "Vendors Order" page
+    @FindBy(xpath = "//li[.='Control Vendors']")
     public WebElement controlVendorText;
 
+//Control Account button
     @FindBy(xpath = "//a[@class='oe_menu_leaf'][@data-menu='103']")
     public WebElement controlAccountButton;
-//Control Accounts
-    @FindBy(xpath = "//li[@class='active'][.='Control Accounts']")
+
+//Header from "Control Accounts"
+    @FindBy(xpath = "//li[.='Control Accounts']")
     public WebElement controlAccountText;
 
+//Employees Payment button
     @FindBy(xpath = "//a[@class='oe_menu_leaf'][@data-menu='104']")
     public WebElement employeesPaymentButton;
 
-    //Register Cash Moves
-    @FindBy(xpath = "//li[@class='active'][.='Register Cash Moves']")
+//Header from "Employees Payment" page
+    @FindBy(xpath = "//li[.='Register Cash Moves']")
     public WebElement registCashMovesText;
 
 
-    public void managerModuleFill(String tabs){
+//Kanban button from "Today`s order" page
+    @FindBy(xpath = "//button[@class='btn btn-icon fa fa-lg fa-th-large o_cp_switch_kanban']")
+    public WebElement changeViewTodaysOrder;
 
-        if (tabs.trim().equalsIgnoreCase("Today`s order") ){
-  Exwait.until(ExpectedConditions.elementToBeClickable(todaysOrderButton));
-             todaysOrderButton.click();
+  //Add column for creating new order
+@FindBy(xpath = "//span[@class='o_kanban_add_column']")
+public WebElement addColumn;
 
-
-        }else  if (tabs.trim().equalsIgnoreCase("Orders by Vendor") ){
-Exwait.until(ExpectedConditions.elementToBeClickable(vendorsOrderButton));
-            vendorsOrderButton.click();
-
-
-        }else  if (tabs.trim().equalsIgnoreCase("") ){
-Exwait.until(ExpectedConditions.elementToBeClickable(controlAccountButton));
-            controlAccountButton.click();
+//Input for new column
+@FindBy(xpath = "//input[@class='form-control o_input']")
+public WebElement inputNewColumnTodaysOrder;
 
 
-        }else  if (tabs.trim().equalsIgnoreCase("Employee Payments") ){
 
-Exwait.until(ExpectedConditions.elementToBeClickable(employeesPaymentButton));
-            employeesPaymentButton.click();
+    public void createTodaysOrder(){
+        //Changing view for Kanban column
+    changeViewTodaysOrder.click();
+   BrowserUtils.wait(1);
 
+   //Add column for creating new order
+     addColumn.click();
+BrowserUtils.wait(1);
 
-        }
-
-
+inputNewColumnTodaysOrder.sendKeys("New todays order");
 
     }
 
-    public void managerModuleTextVerif( String expectResult){
-
-        if ( expectResult.trim().equalsIgnoreCase("Orders by Vendor")){
-
-            Exwait.until(ExpectedConditions.visibilityOf(textVerifOnTodaysOrder));
-            Assert.assertTrue(textVerifOnTodaysOrder.isDisplayed());
-
-        }else  if ( expectResult.equalsIgnoreCase("Control Vendors")){
-
-            Exwait.until(ExpectedConditions.visibilityOf(controlVendorText));
-            Assert.assertTrue(controlVendorText.isDisplayed());
-
-        }else  if ( expectResult.trim().equalsIgnoreCase("Control Accounts")){
-
-            Exwait.until(ExpectedConditions.visibilityOf(controlAccountText));
-            Assert.assertTrue(controlAccountText.isDisplayed());
-
-        }else  if ( expectResult.trim().equalsIgnoreCase("Register Cash Moves")){
-
-
-            Exwait.until(ExpectedConditions.visibilityOf(registCashMovesText));
-            Assert.assertTrue(registCashMovesText.isDisplayed());
-
-        }
 
 
 
-    }
+
+
+
 //**********************************************************************************************************************
 
 
