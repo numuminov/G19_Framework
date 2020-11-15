@@ -21,10 +21,10 @@ public class LunchPage extends TestBasePage{
 
 
     //---------------------------Background WebElements & Methods-----------------------------------------------------------
-@FindBy(xpath = "//a[@data-menu-xmlid='lunch.menu_lunch']")
+@FindBy(xpath = "//a[@data-menu-xmlid='lunch.menu_lunch']")//Clickin on the Lunch button
     public WebElement Lunch_Button;
 
-@FindBy(xpath = "//button[@class='btn btn-sm btn-primary']")
+@FindBy(xpath = "//button[@class='btn btn-sm btn-primary']")//Handle pop-up error message
     public WebElement popup_OK_error;
 
 public void beforeLunchButton(){
@@ -90,35 +90,30 @@ public WebElement changeView;
 @FindBy(xpath = "//span[@class='o_kanban_add_column']")
 public WebElement addColumn;
 
+
 //Input for new column
 @FindBy(xpath = "//input[@class='form-control o_input']")
 public WebElement inputNewColumnTodaysOrder;
 
 
+//Text from the title of column
  @FindBy(xpath = "//span[@class='o_column_title']")
   public WebElement titleText;
 
+
+ //Checking specific Title for column
+    //using for verification on "Orders By Vendor" page
     @FindBy(xpath = "//span[@class='o_column_title'][.='Undefined']")
     public WebElement columnTitle2;
 
+    //Checking if new tabs is visible from "Undefined" column
     @FindBy(xpath = "//span[.='erfew']")
     public WebElement recordTop;
 
-    public void controlVendorsOrders(){
-    Exwait.until(ExpectedConditions.elementToBeClickable(changeView));
-    changeView.click();
-Exwait.until(ExpectedConditions.visibilityOf(columnTitle2));
-Assert.assertTrue(columnTitle2.isDisplayed());
-Assert.assertTrue(recordTop.isDisplayed());
-
-    }
-
-    public void controlAccountVerif(){
-    Exwait.until(ExpectedConditions.elementToBeClickable(changeView));
-    changeView.click();
-    Exwait.until(ExpectedConditions.visibilityOf(titleText));
-    Assert.assertTrue(titleText.isDisplayed());
-}
+//        -----------------------------1 Method US2----------------------------
+    //Method checking info for "Today`s Order" page
+     // Changing view
+      //creating new title
 
     public void createTodaysOrder(){
         //Changing view for Kanban column
@@ -129,18 +124,58 @@ Assert.assertTrue(recordTop.isDisplayed());
         addColumn.click();
         BrowserUtils.wait(1);
 
+        //Creating new title
         inputNewColumnTodaysOrder.sendKeys("New todays order"+ Keys.ENTER);
-        Exwait.until(ExpectedConditions.visibilityOf(titleText));
+                                             Exwait.until(ExpectedConditions.visibilityOf(titleText));
 
+        //Verifying if new title is appeared
         String expRes = "New todays order";
         String actRes = titleText.getText();
         Assert.assertEquals(expRes,actRes);
     }
 
+//        -----------------------------2 Method US2----------------------------
 
+    //Method checking info for "Control Vendors" page
+    public void controlVendorsOrders(){
+        //Changing view
+                                         Exwait.until(ExpectedConditions.elementToBeClickable(changeView));
+    changeView.click();
+
+    // verifying if "Control Order columns is displayed"
+                                            Exwait.until(ExpectedConditions.visibilityOf(columnTitle2));
+    Assert.assertTrue(columnTitle2.isDisplayed());
+
+    // Checking description to verify that title is appeard
+ Assert.assertTrue(recordTop.isDisplayed());
+
+    }
+
+
+
+//        -----------------------------3 Method US2----------------------------
+
+    //Method checking info for "Control Account" page
+    public void controlAccountVerif(){
+                              Exwait.until(ExpectedConditions.elementToBeClickable(changeView));
+    changeView.click();
+                                      Exwait.until(ExpectedConditions.visibilityOf(titleText));
+    Assert.assertTrue(titleText.isDisplayed());
+}
+
+
+//Checking payment info, if statement is correct and amount is appeared
+@FindBy(xpath = "//div[@class='col-xs-4 text-right']//span[.='31.00']")
+public WebElement checkPayment;
+
+
+    //        -----------------------------4 Method US2----------------------------
+    //Method checking info for "Employee Payment" page
 public void checkPaymentHistory(){
     Exwait.until(ExpectedConditions.elementToBeClickable(changeView));
     changeView.click();
+BrowserUtils.wait(2);
+    Assert.assertTrue(checkPayment.isDisplayed());
 
 }
 //**********************************************************************************************************************

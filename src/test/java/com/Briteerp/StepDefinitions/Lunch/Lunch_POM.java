@@ -137,19 +137,22 @@ BrowserUtils.wait(2);
 
 @And ("user should be able to do the {string} from the page specific tab")
  public  void user_should_be_able_to_do(String actionTable){
-
-        if (actionTable.contains("Create a new order for today")){
+//Verifying information if we are on Today`s order page
+        if (actionTable.contains("Check orders for today")){
             BrowserUtils.wait(1);
 lunchPage.createTodaysOrder();
 
-        }else if (actionTable.contains("Create a new order by Vendor")){
+//Verifying information if we are on Orders by Vendor page
+        }else if (actionTable.contains("Check order by Vendor")){
 lunchPage.controlVendorsOrders();
 
-        }else if (actionTable.contains("Create a new account")){
+//Verifying information if we are on Control Accounts page
+        }else if (actionTable.contains("Check an account ")){
 lunchPage.controlAccountVerif();
 
-        }else if (actionTable.contains("Create a new payment")){
-
+//Verifying information if we are on Employee Payments page
+        }else if (actionTable.contains("Check a payments")){
+lunchPage.checkPaymentHistory();
 
         }
 

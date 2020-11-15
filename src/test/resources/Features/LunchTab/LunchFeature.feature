@@ -23,11 +23,11 @@ Scenario Outline: check "Manager" module functionality
       Then user should be able to see information about "<tabs>" page
      And user should be able to do the "<actions>" from the page specific tab
       Examples:
-|       tabs       |    actions                     |
-|  Today`s order   |  Create a new order for today  |
-| Orders by Vendor |  Create a new order by Vendor  |
-| Control Accounts |  Create a new account          |
-| Employee Payments|  Create a new payment          |
+|       tabs       |    actions               |
+|  Today`s order   |  Check orders for today  |
+| Orders by Vendor |  Check order by Vendor   |
+| Control Accounts |  Check an account        |
+| Employee Payments|  Check a payments        |
 
 
                                          #US3
