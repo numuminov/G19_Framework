@@ -139,13 +139,14 @@ BrowserUtils.wait(2);
  public  void user_should_be_able_to_do(String actionTable){
 
         if (actionTable.contains("Create a new order for today")){
-
+            BrowserUtils.wait(1);
+lunchPage.createTodaysOrder();
 
         }else if (actionTable.contains("Create a new order by Vendor")){
-
+lunchPage.controlVendorsOrders();
 
         }else if (actionTable.contains("Create a new account")){
-
+lunchPage.controlAccountVerif();
 
         }else if (actionTable.contains("Create a new payment")){
 

@@ -4,6 +4,7 @@ import com.Briteerp.Utils.BrowserUtils;
 import com.Briteerp.Utils.Driver;
 import io.cucumber.datatable.DataTable;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -82,8 +83,8 @@ public WebElement NewOrderBut;
 
 
 //Kanban button from "Today`s order" page
-    @FindBy(xpath = "//button[@class='btn btn-icon fa fa-lg fa-th-large o_cp_switch_kanban']")
-    public WebElement changeViewTodaysOrder;
+@FindBy(xpath = "//button[@class='btn btn-icon fa fa-lg fa-th-large o_cp_switch_kanban']")
+public WebElement changeView;
 
   //Add column for creating new order
 @FindBy(xpath = "//span[@class='o_kanban_add_column']")
@@ -94,26 +95,54 @@ public WebElement addColumn;
 public WebElement inputNewColumnTodaysOrder;
 
 
+ @FindBy(xpath = "//span[@class='o_column_title']")
+  public WebElement titleText;
 
-    public void createTodaysOrder(){
-        //Changing view for Kanban column
-    changeViewTodaysOrder.click();
-   BrowserUtils.wait(1);
+    @FindBy(xpath = "//span[@class='o_column_title'][.='Undefined']")
+    public WebElement columnTitle2;
 
-   //Add column for creating new order
-     addColumn.click();
-BrowserUtils.wait(1);
+    @FindBy(xpath = "//span[.='erfew']")
+    public WebElement recordTop;
 
-inputNewColumnTodaysOrder.sendKeys("New todays order");
+    public void controlVendorsOrders(){
+    Exwait.until(ExpectedConditions.elementToBeClickable(changeView));
+    changeView.click();
+Exwait.until(ExpectedConditions.visibilityOf(columnTitle2));
+Assert.assertTrue(columnTitle2.isDisplayed());
+Assert.assertTrue(recordTop.isDisplayed());
 
     }
 
+    public void controlAccountVerif(){
+    Exwait.until(ExpectedConditions.elementToBeClickable(changeView));
+    changeView.click();
+    Exwait.until(ExpectedConditions.visibilityOf(titleText));
+    Assert.assertTrue(titleText.isDisplayed());
+}
+
+    public void createTodaysOrder(){
+        //Changing view for Kanban column
+        changeView.click();
+        BrowserUtils.wait(1);
+
+        //Add column for creating new order
+        addColumn.click();
+        BrowserUtils.wait(1);
+
+        inputNewColumnTodaysOrder.sendKeys("New todays order"+ Keys.ENTER);
+        Exwait.until(ExpectedConditions.visibilityOf(titleText));
+
+        String expRes = "New todays order";
+        String actRes = titleText.getText();
+        Assert.assertEquals(expRes,actRes);
+    }
 
 
+public void checkPaymentHistory(){
+    Exwait.until(ExpectedConditions.elementToBeClickable(changeView));
+    changeView.click();
 
-
-
-
+}
 //**********************************************************************************************************************
 
 
