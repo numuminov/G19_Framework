@@ -15,25 +15,25 @@ public class DiscussPage  extends TestBasePage {
     private WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 30);
 
     @FindBy(xpath = "//a[@data-menu='115']")
-    public WebElement discuss;
+    private WebElement discuss;
 
     @FindBy(xpath = "//a[@data-menu='120']")
-    public WebElement calendar;
+    private WebElement calendar;
 
     @FindBy(xpath = "//div[@class='o_mail_chat_title_main o_mail_chat_title_starred o_mail_chat_channel_item o_active']")
-    public WebElement starred;
+    private WebElement starred;
 
     @FindBy(xpath = "(//span[@class='fa fa-plus o_add'])[1]")
-    public WebElement addChannelButton;
+    private WebElement addChannelButton;
 
     @FindBy(xpath = "(//input[@class='o_input ui-autocomplete-input'])[1]")
-    public WebElement addChannelInput;
+    private WebElement addChannelInput;
 
     @FindBy(xpath = "(//ul[@class='ui-autocomplete ui-front ui-menu ui-widget ui-widget-content'])[2]")
-    public WebElement addChannel;
+    private WebElement addChannel;
 
     @FindBy(xpath = "//div[@title='announcements']")
-    public WebElement newChannel;
+    private WebElement newChannel;
 
 
 
