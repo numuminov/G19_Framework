@@ -1,5 +1,5 @@
 Feature: Manage Discuss module
-@channel
+
   Scenario: Creating new channel
 
 Given user is on the Discuss page
