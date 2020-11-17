@@ -58,5 +58,15 @@ public class DiscussPage  extends TestBasePage {
 
     }
 
+    public void addChannelInputIsDisplayed(){
+        addChannelInput.isDisplayed();
+
+    }
+
+    public void newChanelIsDisplayed(){
+        newChannel.isDisplayed();
+
+    }
+
 
 }

@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
             features = "src/test/resources/Features",
             glue = "com/Briteerp/StepDefinitions",
             dryRun = false,
-            //tags = "",
-            //publish = true
+            tags = "",
+            publish = true
     )
     public class Runner1 {}
